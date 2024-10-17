@@ -1,0 +1,7 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "A Node URL shortener.",
+  "author": "souzaluan <luan.souza69@hotmail.com>"
+}
