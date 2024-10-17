@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "A Node URL shortener.",
-  "author": "souzaluan <luan.souza69@hotmail.com>"
+  "author": "souzaluan <luan.souza69@hotmail.com>",
+  "engines": {
+    "npm": "10.8.2",
+    "node": "20.17.0",
+    "yarn": "please-use-npm"
+  }
 }
