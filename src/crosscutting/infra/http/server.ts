@@ -6,8 +6,9 @@ import express from 'express'
 import cors from 'cors'
 import routes from './routes'
 import error from '../../middlewares/error'
+import env from '../../config/environment-variables'
 
-const APP_PORT = process.env.APP_PORT || 3000
+const APP_PORT = env.APP_PORT
 
 const app = express()
 

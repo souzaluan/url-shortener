@@ -1,9 +1,10 @@
+import env from '../../config/environment-variables'
 import { Request, Response, Router } from 'express'
 
 const router = Router()
 const routes = Router()
 
-const API_PREFIX_URL = process.env.API_PREFIX_URL || '/api'
+const API_PREFIX_URL = env.API_PREFIX_URL
 
 const notFoundRoute = (_: Request, res: Response) => {
   res.status(404).json({ error: 'Not found' })
