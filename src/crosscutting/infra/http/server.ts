@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import 'express-async-errors'
 import 'dotenv/config'
 
@@ -8,6 +9,10 @@ import routes from './routes'
 import error from '../../middlewares/error'
 import env from '../../config/environment-variables'
 
+import { DataSourceOptions } from 'typeorm'
+import DataSourceManager from '../typeorm/helpers/data-source-manager'
+import dataSourceOptions from '../typeorm/config/data-source'
+
 const APP_PORT = env.APP_PORT
 
 const app = express()
@@ -17,6 +22,20 @@ app.use(cors())
 app.use(routes)
 app.use(error)
 
-app.listen(APP_PORT, () => {
-  console.log('Server is running on port', APP_PORT)
-})
+const connection = DataSourceManager.getInstance()
+connection
+  .createDataSource(
+    'default',
+    dataSourceOptions.get('default') as DataSourceOptions,
+  )
+  .then(() => {
+    const isInitialized = connection.getDataSource('default')?.isInitialized
+
+    if (isInitialized) {
+      console.log('Database connected!')
+
+      app.listen(APP_PORT, () => {
+        console.log('Server is running on port', APP_PORT)
+      })
+    }
+  })
