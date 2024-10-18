@@ -8,5 +8,9 @@
     "npm": "10.8.2",
     "node": "20.17.0",
     "yarn": "please-use-npm"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "eslint": "^8.57.1"
   }
 }
