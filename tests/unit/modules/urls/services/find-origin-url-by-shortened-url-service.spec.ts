@@ -16,7 +16,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     )
   })
 
-  it('should be able to find a origin url by shortened url', async () => {
+  it('should be able to find an origin url by shortened url', async () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
@@ -31,7 +31,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     expect(foundUrl).toHaveProperty('originUrl')
   })
 
-  it('should not be able to find a origin url if shortened url is empty', async () => {
+  it('should not be able to find an origin url if shortened url is empty', async () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
@@ -46,7 +46,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     expect(findUrl).rejects.toBeInstanceOf(BadRequestError)
   })
 
-  it("should not be able to find a origin url if shortened url doesn't exists", async () => {
+  it("should not be able to find an origin url if shortened url doesn't exists", async () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
@@ -59,5 +59,22 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     })
 
     expect(findUrl).rejects.toBeInstanceOf(NotFoundError)
+  })
+
+  it('should increment click when find an origin url', async () => {
+    const url = {
+      originUrl: 'https://localhost:3000/api/long-url',
+      slug: 'shortened-url',
+    }
+
+    await fakeUrlRepository.create(url)
+
+    await findOriginUrlByShortenedUrlService.execute({
+      shortenedUrl: 'https://localhost:3000/api/shortened-url',
+    })
+
+    const foundUrl = await fakeUrlRepository.findOneBySlug('shortened-url')
+
+    expect(foundUrl?.clicks).toEqual(1)
   })
 })

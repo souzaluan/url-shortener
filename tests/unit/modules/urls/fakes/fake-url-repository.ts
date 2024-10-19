@@ -11,6 +11,7 @@ class FakeUrlRepository implements IUrlRepository {
     const url = {
       ...data,
       id: randomUUID(),
+      clicks: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null,
@@ -29,6 +30,11 @@ class FakeUrlRepository implements IUrlRepository {
     }
 
     return url
+  }
+
+  async incrementClick(id: string): Promise<void> {
+    const urlIndex = this.urls.findIndex((url) => url.id === id)
+    this.urls[urlIndex].clicks++
   }
 }
 
