@@ -23,6 +23,10 @@ class UserRepository implements IUserRepository {
       select: ['id', 'name', 'email', 'createdAt', 'updatedAt'],
     })
   }
+
+  async findOneByEmail(email: string): Promise<IUserEntity | null> {
+    return this.repository.findOneBy({ email })
+  }
 }
 
 export default UserRepository
