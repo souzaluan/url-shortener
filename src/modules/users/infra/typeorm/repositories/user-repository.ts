@@ -1,9 +1,9 @@
-import getDataRepository from 'crosscutting/infra/typeorm/helpers/get-repository'
-import IUserRepository from 'modules/users/repositories/user-repository'
+import getDataRepository from '../../../../../crosscutting/infra/typeorm/helpers/get-repository'
+import IUserRepository from '../../../repositories/user-repository'
 import { UserEntity } from '../entities/user-entity'
-import { IUserEntity } from 'modules/users/domain/user-entity'
+import { IUserEntity } from '../../../domain/user-entity'
 import { Repository } from 'typeorm'
-import CreateUserDTO from 'modules/users/dtos/create-user-dto'
+import CreateUserDTO from '../../../dtos/create-user-dto'
 
 class UserRepository implements IUserRepository {
   private repository: Repository<IUserEntity>
