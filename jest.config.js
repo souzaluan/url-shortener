@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { pathsToModuleNameMapper } = require('ts-jest')
-const { compilerOptions } = require('./tsconfig.json')
-
 module.exports = {
   roots: ['<rootDir>/tests'],
   collectCoverageFrom: [
@@ -17,7 +13,5 @@ module.exports = {
   transform: {
     '.+\\.ts$': 'ts-jest',
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/src/',
-  }),
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 }
