@@ -6,7 +6,7 @@ import { UnauthorizedError } from '../../../crosscutting/errors/unauthorized-err
 
 import IHashProvider, {
   HASH_PROVIDER_TOKEN,
-} from '../../../crosscutting/container/providers/HashProvider/models/IHashProvider'
+} from '../../../crosscutting/container/providers/hash-provider/models/hash-provider'
 
 import IUserRepository, {
   USER_REPOSITORY_TOKEN,

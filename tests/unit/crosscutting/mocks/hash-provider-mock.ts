@@ -1,4 +1,4 @@
-import IHashProvider from '../../../../src/crosscutting/container/providers/HashProvider/models/IHashProvider'
+import IHashProvider from '../../../../src/crosscutting/container/providers/hash-provider/models/hash-provider'
 
 class HashProviderMock implements IHashProvider {
   async hash(raw: string): Promise<string> {

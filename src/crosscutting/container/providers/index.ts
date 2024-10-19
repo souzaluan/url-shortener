@@ -1,1 +1,1 @@
-import './HashProvider'
+import './hash-provider'
