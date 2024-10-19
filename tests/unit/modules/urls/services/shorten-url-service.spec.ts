@@ -14,6 +14,7 @@ describe('ShortenUrlService', () => {
   it('should be able to shorten a url', async () => {
     const url = await shortenUrlService.execute({
       originUrl: 'https://localhost:3000/api/long-url',
+      userId: null,
     })
 
     expect(url).toHaveProperty('id')
@@ -23,6 +24,7 @@ describe('ShortenUrlService', () => {
   it('should be able to shorten a url with only 6 characters in the slug', async () => {
     const url = await shortenUrlService.execute({
       originUrl: 'https://localhost:3000/api/long-url',
+      userId: null,
     })
 
     const shortened = fakeUrlRepository.urls.find((_url) => _url.id === url.id)

@@ -28,10 +28,10 @@ export class UrlEntity implements IUrlEntity {
   @Column({ type: 'int', default: 0 })
   clicks: number
 
-  @Column({ name: 'user_id' })
+  @Column({ name: 'user_id', nullable: true })
   userId: string | null
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, { nullable: true })
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user: IUserEntity | null
 

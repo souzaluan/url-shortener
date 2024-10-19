@@ -38,6 +38,22 @@ class FakeUserRepository implements IUserRepository {
     }
   }
 
+  async findOneById(id: string): Promise<Omit<IUserEntity, 'password'> | null> {
+    const user = this.users.find((user) => user.id === id)
+
+    if (!user) {
+      return null
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    }
+  }
+
   async findOneWithPasswordByEmail(email: string): Promise<IUserEntity | null> {
     const user = this.users.find((user) => user.email === email)
 
