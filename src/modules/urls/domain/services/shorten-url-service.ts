@@ -5,7 +5,8 @@ export namespace IShortenUrl {
     originUrl: string
   }
 
-  export interface Response extends Omit<IUrlEntity, 'slug'> {
+  export interface Response
+    extends Omit<IUrlEntity, 'slug' | 'user' | 'userId'> {
     shortenedUrl: string
   }
 }
