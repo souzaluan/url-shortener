@@ -1,2 +1,2 @@
 import './hash-provider'
-import './token-provider'
+import './auth-token-provider'
