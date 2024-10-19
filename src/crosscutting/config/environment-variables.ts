@@ -8,4 +8,6 @@ export default cleanEnv(process.env, {
   DB_USERNAME: str({ desc: 'Database username', example: 'user' }),
   DB_PASSWORD: str({ desc: 'Database password', example: 'root' }),
   DB_NAME: str({ desc: 'Database name', example: 'url-shortener-database' }),
+  JWT_SECRET: str({ desc: 'JWT secret key' }),
+  JWT_EXPIRES_IN: num({ desc: 'JWT expiration time in seconds' }),
 })

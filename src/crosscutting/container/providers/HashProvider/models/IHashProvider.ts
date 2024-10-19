@@ -3,4 +3,6 @@ interface IHashProvider {
   compare(raw: string, hashed: string): Promise<boolean>
 }
 
+export const HASH_PROVIDER_TOKEN = Symbol('HashProvider')
+
 export default IHashProvider

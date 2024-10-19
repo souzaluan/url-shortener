@@ -8,8 +8,9 @@ import {
   ICreateUserService,
 } from '../domain/services/create-user-service'
 
-import { HASH_PROVIDER_TOKEN } from '../../../crosscutting/container/providers/HashProvider'
-import IHashProvider from '../../../crosscutting/container/providers/HashProvider/models/IHashProvider'
+import IHashProvider, {
+  HASH_PROVIDER_TOKEN,
+} from '../../../crosscutting/container/providers/HashProvider/models/IHashProvider'
 
 import { BadRequestError } from '../../../crosscutting/errors/bad-request-error'
 
