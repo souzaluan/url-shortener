@@ -1,8 +1,7 @@
 import { inject, injectable } from 'tsyringe'
 import { sign } from 'jsonwebtoken'
 
-import authenticationConfig from '../../../crosscutting/config/authentication'
-import { NotFoundError } from '../../../crosscutting/errors/not-found-error'
+import env from '../../../crosscutting/config/environment-variables'
 import { UnauthorizedError } from '../../../crosscutting/errors/unauthorized-error'
 
 import IHashProvider, {
@@ -35,10 +34,8 @@ class AuthenticateUserService implements IAuthenticateUserService {
     const user = await this.userRepository.findOneWithPasswordByEmail(email)
 
     if (!user) {
-      throw new NotFoundError('User not found')
+      throw new UnauthorizedError('E-mail or password incorrect')
     }
-
-    console.log(user)
 
     const passwordMatch = await this.hashProvider.compare(
       password,
@@ -49,15 +46,15 @@ class AuthenticateUserService implements IAuthenticateUserService {
       throw new UnauthorizedError('E-mail or password incorrect')
     }
 
-    const { expiresIn, secret } = authenticationConfig.jwt
+    const { JWT_EXPIRES_IN, JWT_SECRET } = env
 
     const token = sign(
       {
         id: user.id,
       },
-      secret,
+      JWT_SECRET,
       {
-        expiresIn,
+        expiresIn: JWT_EXPIRES_IN,
       },
     )
 
