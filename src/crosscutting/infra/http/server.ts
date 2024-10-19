@@ -2,6 +2,8 @@ import 'reflect-metadata'
 import 'express-async-errors'
 import 'dotenv/config'
 
+import '../../container'
+
 import express from 'express'
 
 import cors from 'cors'
