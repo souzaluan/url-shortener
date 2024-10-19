@@ -20,6 +20,9 @@ export class UrlEntity implements IUrlEntity {
   @Column()
   slug: string
 
+  @Column({ type: 'int', default: 0 })
+  clicks: number
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 

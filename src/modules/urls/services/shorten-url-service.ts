@@ -36,6 +36,7 @@ class ShortenUrlService implements IShortenUrlService {
       id: createdUrl.id,
       originUrl: createdUrl.originUrl,
       shortenedUrl,
+      clicks: createdUrl.clicks,
       createdAt: createdUrl.createdAt,
       updatedAt: createdUrl.updatedAt,
       deletedAt: createdUrl.deletedAt,

@@ -31,6 +31,8 @@ class FindOriginUrlByShortenedUrlService
       throw new NotFoundError('Origin URL not found')
     }
 
+    await this.urlRepository.incrementClick(url.id)
+
     return {
       originUrl: url.originUrl,
     }

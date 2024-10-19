@@ -20,6 +20,15 @@ class UrlRepository implements IUrlRepository {
   async findOneBySlug(slug: string): Promise<IUrlEntity | null> {
     return this.repository.findOne({ where: { slug }, withDeleted: false })
   }
+
+  async incrementClick(id: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update(UrlEntity)
+      .where({ id })
+      .set({ clicks: () => 'clicks + 1' })
+      .execute()
+  }
 }
 
 export default UrlRepository
