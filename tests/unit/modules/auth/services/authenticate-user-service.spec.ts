@@ -2,19 +2,23 @@ import AuthenticateUserService from '../../../../../src/modules/auth/services/au
 import { UnauthorizedError } from '../../../../../src/crosscutting/errors/unauthorized-error'
 import HashProviderMock from '../../../crosscutting/mocks/hash-provider-mock'
 import FakeUserRepository from '../../users/fakes/fake-user-repository'
+import AuthTokenProviderMock from '../../../crosscutting/mocks/auth-token-provider-mock'
 
 let fakeUserRepository: FakeUserRepository
-let hashProviderMock: HashProviderMock
 let authenticateUserService: AuthenticateUserService
+let hashProviderMock: HashProviderMock
+let authTokenProviderMock: AuthTokenProviderMock
 
 describe('AuthenticateUserService', () => {
   beforeEach(() => {
     fakeUserRepository = new FakeUserRepository()
     hashProviderMock = new HashProviderMock()
+    authTokenProviderMock = new AuthTokenProviderMock()
 
     authenticateUserService = new AuthenticateUserService(
       fakeUserRepository,
       hashProviderMock,
+      authTokenProviderMock,
     )
   })
 

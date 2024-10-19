@@ -10,7 +10,7 @@ import {
 
 import IHashProvider, {
   HASH_PROVIDER_TOKEN,
-} from '../../../crosscutting/container/providers/HashProvider/models/IHashProvider'
+} from '../../../crosscutting/container/providers/hash-provider/models/hash-provider'
 
 import { BadRequestError } from '../../../crosscutting/errors/bad-request-error'
 

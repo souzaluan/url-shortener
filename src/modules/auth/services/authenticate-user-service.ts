@@ -1,16 +1,18 @@
 import { inject, injectable } from 'tsyringe'
-import { sign } from 'jsonwebtoken'
 
-import env from '../../../crosscutting/config/environment-variables'
 import { UnauthorizedError } from '../../../crosscutting/errors/unauthorized-error'
-
-import IHashProvider, {
-  HASH_PROVIDER_TOKEN,
-} from '../../../crosscutting/container/providers/HashProvider/models/IHashProvider'
 
 import IUserRepository, {
   USER_REPOSITORY_TOKEN,
 } from '../../users/repositories/user-repository'
+
+import IHashProvider, {
+  HASH_PROVIDER_TOKEN,
+} from '../../../crosscutting/container/providers/hash-provider/models/hash-provider'
+
+import IAuthTokenProvider, {
+  AUTH_TOKEN_PROVIDER_TOKEN,
+} from '../../../crosscutting/container/providers/auth-token-provider/models/auth-token-provider'
 
 import {
   IAuthenticateUser,
@@ -25,6 +27,9 @@ class AuthenticateUserService implements IAuthenticateUserService {
 
     @inject(HASH_PROVIDER_TOKEN)
     private hashProvider: IHashProvider,
+
+    @inject(AUTH_TOKEN_PROVIDER_TOKEN)
+    private authTokenProvider: IAuthTokenProvider,
   ) {}
 
   async execute({
@@ -46,17 +51,7 @@ class AuthenticateUserService implements IAuthenticateUserService {
       throw new UnauthorizedError('E-mail or password incorrect')
     }
 
-    const { JWT_EXPIRES_IN, JWT_SECRET } = env
-
-    const token = sign(
-      {
-        id: user.id,
-      },
-      JWT_SECRET,
-      {
-        expiresIn: JWT_EXPIRES_IN,
-      },
-    )
+    const token = this.authTokenProvider.sign({ id: user.id })
 
     return {
       user: {
