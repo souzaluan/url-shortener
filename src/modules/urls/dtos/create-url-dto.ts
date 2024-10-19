@@ -1,6 +1,6 @@
 interface CreateUrlDTO {
   originUrl: string
-  shortenedUrl: string
+  slug: string
 }
 
 export default CreateUrlDTO
