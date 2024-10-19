@@ -1,7 +1,7 @@
 export interface IUrlEntity {
   id: string
   originUrl: string
-  shortenedUrl: string
+  slug: string
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null

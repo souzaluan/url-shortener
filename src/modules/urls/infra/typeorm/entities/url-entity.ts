@@ -17,8 +17,8 @@ export class UrlEntity implements IUrlEntity {
   @Column({ name: 'origin_url' })
   originUrl: string
 
-  @Column({ name: 'shortened_url' })
-  shortenedUrl: string
+  @Column()
+  slug: string
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
