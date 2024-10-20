@@ -1,5 +1,6 @@
 import env from '../config/environment-variables'
 
+import users from './users'
 import common from './common'
 
 export default {
@@ -15,7 +16,9 @@ export default {
       url: `http://localhost:${env.APP_PORT}/${env.API_PREFIX_URL}`,
     },
   ],
-  paths: {},
+  paths: {
+    ...users.paths,
+  },
   tags: [...common.tags],
   components: {
     securitySchemes: {
@@ -25,6 +28,7 @@ export default {
       ...common.responses,
     },
     schemas: {
+      ...users.schemas,
       ...common.schemas,
     },
   },
