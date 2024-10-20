@@ -23,13 +23,13 @@ class UpdateUrlController {
     const userId = request.user?.id ?? null
 
     const updateUrlService = container.resolve(UpdateUrlService)
-    const updatedUrl = await updateUrlService.execute({
+    await updateUrlService.execute({
       urlId,
       userId,
       originUrl,
     })
 
-    response.json(updatedUrl)
+    response.json({ message: 'success' })
   }
 }
 
