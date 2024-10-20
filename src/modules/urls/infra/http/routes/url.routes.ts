@@ -4,6 +4,7 @@ import ShortenUrlController from '../controllers/shorten-url-controller'
 import FindOriginUrlByShortenedUrlController from '../controllers/find-origin-url-by-shortened-url-controller'
 import GetUrlsByUserController from '../controllers/get-urls-by-user-controller'
 import DeleteUrlController from '../controllers/delete-url-controller'
+import UpdateUrlController from '../controllers/update-url-controller'
 
 import nonRequiredAuthentication from '../../../../../crosscutting/middlewares/non-required-authentication'
 import requiredAuthentication from '../../../../../crosscutting/middlewares/required-authentication'
@@ -35,6 +36,13 @@ routes.delete(
   requiredAuthentication,
   DeleteUrlController.validator,
   DeleteUrlController.handle,
+)
+
+routes.patch(
+  UpdateUrlController.route,
+  requiredAuthentication,
+  UpdateUrlController.validator,
+  UpdateUrlController.handle,
 )
 
 export default routes
