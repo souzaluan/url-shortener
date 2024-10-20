@@ -1,7 +1,5 @@
 import { inject, injectable } from 'tsyringe'
 
-import randomize from 'randomatic'
-
 import env from '../../../crosscutting/config/environment-variables'
 
 import { NotFoundError } from '../../../crosscutting/errors/not-found-error'
@@ -67,18 +65,6 @@ class UpdateUrlService implements IUpdateUrlService {
       updatedAt: updatedUrl.updatedAt,
       deletedAt: updatedUrl.deletedAt,
     }
-  }
-
-  private async generateSlug(): Promise<string> {
-    const slug = randomize('Aa0', 6)
-
-    const foundUrl = await this.urlRepository.findOneBySlug(slug)
-
-    if (foundUrl) {
-      return this.generateSlug()
-    }
-
-    return slug
   }
 }
 
