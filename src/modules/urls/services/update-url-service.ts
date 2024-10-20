@@ -32,7 +32,7 @@ class UpdateUrlService implements IUpdateUrlService {
     userId,
     urlId,
     originUrl,
-  }: IUpdateUrl.Params): Promise<IUpdateUrl.Response> {
+  }: IUpdateUrl.Params): Promise<void> {
     const user = await this.userRepository.findOneById(userId)
 
     if (!user) {
@@ -49,22 +49,10 @@ class UpdateUrlService implements IUpdateUrlService {
       throw new UnauthorizedError()
     }
 
-    const updatedUrl = await this.urlRepository.update({
+    await this.urlRepository.update({
       id: urlId,
       originUrl,
     })
-
-    const shortenedUrl = `${env.API_URL}/${updatedUrl.slug}`
-
-    return {
-      id: updatedUrl.id,
-      originUrl: updatedUrl.originUrl,
-      shortenedUrl,
-      clicks: updatedUrl.clicks,
-      createdAt: updatedUrl.createdAt,
-      updatedAt: updatedUrl.updatedAt,
-      deletedAt: updatedUrl.deletedAt,
-    }
   }
 }
 
