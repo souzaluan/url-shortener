@@ -5,7 +5,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import ShortenUrlService from '../../../services/shorten-url-service'
 
 class ShortenUrlController {
-  static route = '/'
+  static route = '/urls/'
 
   static validator = celebrate({
     [Segments.BODY]: {
@@ -16,9 +16,12 @@ class ShortenUrlController {
   static async handle(request: Request, response: Response) {
     const { originUrl } = request.body
 
+    const userId = request.user?.id ?? null
+
     const shortenUrlService = container.resolve(ShortenUrlService)
     const shortenedUrl = await shortenUrlService.execute({
       originUrl,
+      userId,
     })
 
     response.status(201).json(shortenedUrl)

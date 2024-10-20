@@ -9,6 +9,7 @@ interface IUserRepository {
   findOneByEmail: (
     email: string,
   ) => Promise<Omit<IUserEntity, 'password'> | null>
+  findOneById: (id: string) => Promise<Omit<IUserEntity, 'password'> | null>
 }
 
 export default IUserRepository
