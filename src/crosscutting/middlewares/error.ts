@@ -2,6 +2,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { ApiError } from '../errors/api-error'
 import { CelebrateError } from 'celebrate'
+import { JsonWebTokenError } from 'jsonwebtoken'
 
 const error = (
   error: ApiError,
@@ -23,7 +24,15 @@ const error = (
         errorQuery?.details[0]
 
       response.status(400).json({
-        message: errorDetails?.message ?? 'Body validation error',
+        error: errorDetails?.message ?? 'Body validation error',
+      })
+
+      return
+    }
+
+    if (error instanceof JsonWebTokenError) {
+      response.status(401).json({
+        error: 'Invalid authorization token',
       })
 
       return

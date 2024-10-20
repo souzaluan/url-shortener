@@ -3,11 +3,16 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 
 import { IUrlEntity } from '../../../domain/url-entity'
+
+import { UserEntity } from '../../../../users/infra/typeorm/entities/user-entity'
+import { IUserEntity } from '../../../../users/domain/user-entity'
 
 @Entity('urls')
 export class UrlEntity implements IUrlEntity {
@@ -22,6 +27,13 @@ export class UrlEntity implements IUrlEntity {
 
   @Column({ type: 'int', default: 0 })
   clicks: number
+
+  @Column({ name: 'user_id', nullable: true })
+  userId: string | null
+
+  @ManyToOne(() => UserEntity, { nullable: true })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  user: IUserEntity | null
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date

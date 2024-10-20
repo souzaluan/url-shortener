@@ -22,12 +22,14 @@ class ShortenUrlService implements IShortenUrlService {
 
   async execute({
     originUrl,
+    userId,
   }: IShortenUrl.Params): Promise<IShortenUrl.Response> {
     const slug = await this.generateSlug()
 
     const createdUrl = await this.urlRepository.create({
       originUrl,
       slug,
+      userId,
     })
 
     const shortenedUrl = `${env.API_URL}/${slug}`

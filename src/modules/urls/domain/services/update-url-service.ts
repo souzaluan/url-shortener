@@ -1,9 +1,10 @@
 import { IUrlEntity } from '../url-entity'
 
-export namespace IShortenUrl {
+export namespace IUpdateUrl {
   export interface Params {
-    originUrl: string
-    userId: string | null
+    urlId: string
+    userId: string
+    originUrl?: string
   }
 
   export interface Response
@@ -12,6 +13,6 @@ export namespace IShortenUrl {
   }
 }
 
-export interface IShortenUrlService {
-  execute: (params: IShortenUrl.Params) => Promise<IShortenUrl.Response>
+export interface IUpdateUrlService {
+  execute: (params: IUpdateUrl.Params) => Promise<IUpdateUrl.Response>
 }
