@@ -22,6 +22,10 @@ class UrlRepository implements IUrlRepository {
     return this.repository.findOne({ where: { slug }, withDeleted: false })
   }
 
+  async findOneById(id: string): Promise<IUrlEntity | null> {
+    return this.repository.findOne({ where: { id }, withDeleted: false })
+  }
+
   async incrementClick(id: string): Promise<void> {
     await this.repository
       .createQueryBuilder()
@@ -50,6 +54,10 @@ class UrlRepository implements IUrlRepository {
       items,
       pages,
     }
+  }
+
+  async deleteById(id: string): Promise<void> {
+    await this.repository.softDelete(id)
   }
 }
 
