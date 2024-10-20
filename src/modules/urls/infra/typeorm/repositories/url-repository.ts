@@ -4,6 +4,7 @@ import IUrlRepository from '../../../repositories/url-repository'
 import { IUrlEntity } from '../../../domain/url-entity'
 import { UrlEntity } from '../entities/url-entity'
 import CreateUrlDTO from '../../../dtos/create-url-dto'
+import UpdateUrlDTO from '../../../dtos/update-url-dto'
 import GetUrlsByUserDTO from '../../../dtos/get-urls-by-user-dto'
 
 class UrlRepository implements IUrlRepository {
@@ -16,6 +17,10 @@ class UrlRepository implements IUrlRepository {
   async create(data: CreateUrlDTO): Promise<IUrlEntity> {
     const createdUser = this.repository.create(data)
     return this.repository.save(createdUser)
+  }
+
+  async update(data: UpdateUrlDTO): Promise<IUrlEntity> {
+    return this.repository.save(data)
   }
 
   async findOneBySlug(slug: string): Promise<IUrlEntity | null> {
