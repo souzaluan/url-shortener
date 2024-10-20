@@ -4,6 +4,7 @@ import IUrlRepository from '../../../../../src/modules/urls/repositories/url-rep
 import { IUrlEntity } from '../../../../../src/modules/urls/domain/url-entity'
 import CreateUrlDTO from '../../../../../src/modules/urls/dtos/create-url-dto'
 import GetUrlsByUserDTO from '../../../../../src/modules/urls/dtos/get-urls-by-user-dto'
+import UpdateUrlDTO from '../../../../../src/modules/urls/dtos/update-url-dto'
 
 class FakeUrlRepository implements IUrlRepository {
   urls: IUrlEntity[] = []
@@ -22,6 +23,18 @@ class FakeUrlRepository implements IUrlRepository {
     this.urls.push(url)
 
     return url
+  }
+
+  async update(data: UpdateUrlDTO): Promise<IUrlEntity> {
+    const urlIndex = this.urls.findIndex((url) => url.id === data.id)
+
+    this.urls[urlIndex] = {
+      ...this.urls[urlIndex],
+      ...data,
+      updatedAt: new Date(),
+    }
+
+    return this.urls[urlIndex]
   }
 
   async findOneBySlug(slug: string): Promise<IUrlEntity | null> {
