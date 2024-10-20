@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto'
 import IUrlRepository from '../../../../../src/modules/urls/repositories/url-repository'
 import { IUrlEntity } from '../../../../../src/modules/urls/domain/url-entity'
 import CreateUrlDTO from '../../../../../src/modules/urls/dtos/create-url-dto'
+import GetUrlsByUserDTO from '../../../../../src/modules/urls/dtos/get-urls-by-user-dto'
 
 class FakeUrlRepository implements IUrlRepository {
   urls: IUrlEntity[] = []
@@ -12,6 +13,7 @@ class FakeUrlRepository implements IUrlRepository {
       ...data,
       id: randomUUID(),
       clicks: 0,
+      user: null,
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null,
@@ -35,6 +37,22 @@ class FakeUrlRepository implements IUrlRepository {
   async incrementClick(id: string): Promise<void> {
     const urlIndex = this.urls.findIndex((url) => url.id === id)
     this.urls[urlIndex].clicks++
+  }
+
+  async getByUser({
+    userId,
+    limit,
+    page,
+  }: GetUrlsByUserDTO.Params): Promise<GetUrlsByUserDTO.Response> {
+    const data = this.urls
+      .filter((url) => url.userId === userId)
+      .slice((page - 1) * limit, page * limit)
+
+    return {
+      data,
+      items: data.length,
+      pages: Math.ceil(data.length / limit),
+    }
   }
 }
 

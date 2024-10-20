@@ -20,6 +20,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
+      userId: null,
     }
 
     await fakeUrlRepository.create(url)
@@ -35,6 +36,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
+      userId: null,
     }
 
     await fakeUrlRepository.create(url)
@@ -50,6 +52,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
+      userId: null,
     }
 
     await fakeUrlRepository.create(url)
@@ -65,6 +68,7 @@ describe('FindOriginUrlByShortenedUrlService', () => {
     const url = {
       originUrl: 'https://localhost:3000/api/long-url',
       slug: 'shortened-url',
+      userId: null,
     }
 
     await fakeUrlRepository.create(url)
