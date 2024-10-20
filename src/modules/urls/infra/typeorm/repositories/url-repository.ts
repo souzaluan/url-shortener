@@ -4,6 +4,7 @@ import IUrlRepository from '../../../repositories/url-repository'
 import { IUrlEntity } from '../../../domain/url-entity'
 import { UrlEntity } from '../entities/url-entity'
 import CreateUrlDTO from '../../../dtos/create-url-dto'
+import GetUrlsByUserDTO from '../../../dtos/get-urls-by-user-dto'
 
 class UrlRepository implements IUrlRepository {
   private repository: Repository<IUrlEntity>
@@ -28,6 +29,27 @@ class UrlRepository implements IUrlRepository {
       .where({ id })
       .set({ clicks: () => 'clicks + 1' })
       .execute()
+  }
+
+  async getByUser({
+    userId,
+    limit,
+    page,
+  }: GetUrlsByUserDTO.Params): Promise<GetUrlsByUserDTO.Response> {
+    const [data, items] = await this.repository.findAndCount({
+      where: { userId },
+      skip: (page - 1) * limit,
+      take: limit,
+      withDeleted: false,
+    })
+
+    const pages = Math.ceil(items / limit)
+
+    return {
+      data,
+      items,
+      pages,
+    }
   }
 }
 
