@@ -1,7 +1,5 @@
 import { inject, injectable } from 'tsyringe'
 
-import env from '../../../crosscutting/config/environment-variables'
-
 import { NotFoundError } from '../../../crosscutting/errors/not-found-error'
 import { UnauthorizedError } from '../../../crosscutting/errors/unauthorized-error'
 
