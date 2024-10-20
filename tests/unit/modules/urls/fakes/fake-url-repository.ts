@@ -34,6 +34,16 @@ class FakeUrlRepository implements IUrlRepository {
     return url
   }
 
+  async findOneById(id: string): Promise<IUrlEntity | null> {
+    const url = this.urls.find((url) => url.id === id)
+
+    if (!url) {
+      return null
+    }
+
+    return url
+  }
+
   async incrementClick(id: string): Promise<void> {
     const urlIndex = this.urls.findIndex((url) => url.id === id)
     this.urls[urlIndex].clicks++
@@ -53,6 +63,11 @@ class FakeUrlRepository implements IUrlRepository {
       items: data.length,
       pages: Math.ceil(data.length / limit),
     }
+  }
+
+  async deleteById(id: string): Promise<void> {
+    const urlIndex = this.urls.findIndex((url) => url.id === id)
+    this.urls[urlIndex] = { ...this.urls[urlIndex], deletedAt: new Date() }
   }
 }
 
