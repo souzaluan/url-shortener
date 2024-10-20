@@ -5,7 +5,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import ShortenUrlService from '../../../services/shorten-url-service'
 
 class ShortenUrlController {
-  static route = '/'
+  static route = '/urls/'
 
   static validator = celebrate({
     [Segments.BODY]: {

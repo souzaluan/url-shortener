@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import ShortenUrlController from '../controllers/shorten-url-controller'
-import FindOriginUrlByShortenedUrlController from '../controllers/find-origin-url-by-shortened-url-controller'
+import RedirectToOriginUrlController from '../controllers/redirect-to-origin-url-controller'
 import GetUrlsByUserController from '../controllers/get-urls-by-user-controller'
 import DeleteUrlController from '../controllers/delete-url-controller'
 import UpdateUrlController from '../controllers/update-url-controller'
@@ -19,9 +19,9 @@ routes.post(
 )
 
 routes.get(
-  FindOriginUrlByShortenedUrlController.route,
-  FindOriginUrlByShortenedUrlController.validator,
-  FindOriginUrlByShortenedUrlController.handle,
+  RedirectToOriginUrlController.route,
+  RedirectToOriginUrlController.validator,
+  RedirectToOriginUrlController.handle,
 )
 
 routes.get(

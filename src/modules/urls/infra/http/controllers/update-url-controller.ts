@@ -6,7 +6,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import UpdateUrlService from '../../../services/update-url-service'
 
 class UpdateUrlController {
-  static route = '/:id'
+  static route = '/urls/:id'
 
   static validator = celebrate({
     [Segments.PARAMS]: {

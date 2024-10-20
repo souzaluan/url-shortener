@@ -11,9 +11,9 @@ const routes = Router()
 
 const API_PREFIX_URL = env.API_PREFIX_URL
 
-routes.use('/users', userRoutes)
-routes.use('/auth', authRoutes)
-routes.use('/urls', urlRoutes)
+routes.use(userRoutes)
+routes.use(authRoutes)
+routes.use(urlRoutes)
 
 const notFoundRoute = (_: Request, res: Response) => {
   res.status(404).json({ error: 'Not found' })

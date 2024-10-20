@@ -6,7 +6,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import AuthenticateUserService from '../../../services/authenticate-user-service'
 
 class AuthenticateUserController {
-  static route = '/'
+  static route = '/auth'
 
   static validator = celebrate({
     [Segments.BODY]: {

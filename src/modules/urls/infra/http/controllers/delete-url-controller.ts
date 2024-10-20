@@ -5,7 +5,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import DeleteUrlService from '../../../services/delete-url-service'
 
 class DeleteUrlController {
-  static route = '/:id'
+  static route = '/urls/:id'
 
   static validator = celebrate({
     [Segments.PARAMS]: {

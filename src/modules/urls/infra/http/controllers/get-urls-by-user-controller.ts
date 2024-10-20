@@ -5,7 +5,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import GetUrlsByUserService from '../../../services/get-urls-by-user-service'
 
 class GetUrlsByUserController {
-  static route = '/my'
+  static route = '/urls/my'
 
   static validator = celebrate({
     [Segments.QUERY]: {

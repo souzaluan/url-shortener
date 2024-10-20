@@ -6,7 +6,7 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import CreateUserService from '../../../services/create-user-service'
 
 class CreateUserController {
-  static route = '/'
+  static route = '/users'
 
   static validator = celebrate({
     [Segments.BODY]: {
