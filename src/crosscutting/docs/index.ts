@@ -1,6 +1,7 @@
 import env from '../config/environment-variables'
 
 import users from './users'
+import auth from './auth'
 import common from './common'
 
 export default {
@@ -18,6 +19,7 @@ export default {
   ],
   paths: {
     ...users.paths,
+    ...auth.paths,
   },
   tags: [...common.tags],
   components: {
