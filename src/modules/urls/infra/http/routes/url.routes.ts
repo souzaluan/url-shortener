@@ -3,6 +3,7 @@ import { Router } from 'express'
 import ShortenUrlController from '../controllers/shorten-url-controller'
 import FindOriginUrlByShortenedUrlController from '../controllers/find-origin-url-by-shortened-url-controller'
 import GetUrlsByUserController from '../controllers/get-urls-by-user-controller'
+import DeleteUrlController from '../controllers/delete-url-controller'
 
 import nonRequiredAuthentication from '../../../../../crosscutting/middlewares/non-required-authentication'
 import requiredAuthentication from '../../../../../crosscutting/middlewares/required-authentication'
@@ -27,6 +28,13 @@ routes.get(
   requiredAuthentication,
   GetUrlsByUserController.validator,
   GetUrlsByUserController.handle,
+)
+
+routes.delete(
+  DeleteUrlController.route,
+  requiredAuthentication,
+  DeleteUrlController.validator,
+  DeleteUrlController.handle,
 )
 
 export default routes
