@@ -1,5 +1,7 @@
 import GetUrlsByUserService from '../../../../../src/modules/urls/services/get-urls-by-user-service'
 
+import { NotFoundError } from '../../../../../src/crosscutting/errors/not-found-error'
+
 import FakeUrlRepository from '../fakes/fake-url-repository'
 import FakeUserRepository from '../../users/fakes/fake-user-repository'
 
@@ -46,5 +48,15 @@ describe('GetUrlsByUserService', () => {
     expect(data[0].slug).toBe('Abc012')
     expect(items).toEqual(2)
     expect(pages).toEqual(1)
+  })
+
+  it("should be able to get urls if user doesn't exists", async () => {
+    const getUrlsByUser = getUrlsByUserService.execute({
+      userId: 'non-existent-user-id',
+      limit: 10,
+      page: 1,
+    })
+
+    expect(getUrlsByUser).rejects.toBeInstanceOf(NotFoundError)
   })
 })
