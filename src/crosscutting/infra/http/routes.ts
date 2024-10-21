@@ -6,10 +6,16 @@ import userRoutes from '../../../modules/users/infra/http/routes/user.routes'
 import authRoutes from '../../../modules/auth/infra/http/routes/auth.routes'
 import urlRoutes from '../../../modules/urls/infra/http/routes/url.routes'
 
+import swagger from 'swagger-ui-express'
+import docsConfig from '../../docs'
+
 const router = Router()
 const routes = Router()
 
 const API_PREFIX_URL = env.API_PREFIX_URL
+
+routes.use('/docs', swagger.serve)
+routes.get('/docs', swagger.setup(docsConfig))
 
 routes.use(userRoutes)
 routes.use(authRoutes)
