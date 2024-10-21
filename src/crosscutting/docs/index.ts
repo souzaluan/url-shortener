@@ -1,8 +1,9 @@
 import env from '../config/environment-variables'
 
+import common from './common'
 import users from './users'
 import auth from './auth'
-import common from './common'
+import urls from './urls'
 
 export default {
   openapi: '3.0.0',
@@ -20,6 +21,7 @@ export default {
   paths: {
     ...users.paths,
     ...auth.paths,
+    ...urls.paths,
   },
   tags: [...common.tags],
   components: {
@@ -31,6 +33,7 @@ export default {
     },
     schemas: {
       ...users.schemas,
+      ...urls.schemas,
       ...common.schemas,
     },
   },
