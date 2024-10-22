@@ -13,7 +13,9 @@
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:create": "cross-var npm run typeorm migration:create ./src/crosscutting/infra/typeorm/migrations/$npm_config_name",
     "migration:run": "npm run typeorm -- migration:run -d ./src/crosscutting/infra/typeorm/helpers/default-data-source.ts",
-    "migration:revert": "npm run typeorm -- migration:revert -d ./src/crosscutting/infra/typeorm/helpers/default-data-source.ts"
+    "migration:revert": "npm run typeorm -- migration:revert -d ./src/crosscutting/infra/typeorm/helpers/default-data-source.ts",
+    "build": "rm -rf ./dist && tsc -p tsconfig.json",
+    "start": "node -r ts-node/register/transpile-only dist/crosscutting/infra/http/server.js"
   },
   "engines": {
     "npm": "10.x",

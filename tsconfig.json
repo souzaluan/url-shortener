@@ -4,6 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "baseUrl": "./src",
+    "rootDirs": ["src"],
     "strict": true,
     "allowJs": true,
     "strictPropertyInitialization": false,
@@ -14,5 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./src/@types", "./node_modules/@types"],
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "./dist"]
 }
