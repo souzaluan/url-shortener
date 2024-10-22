@@ -63,6 +63,7 @@ _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
 1. **Clone o repositório**
    ```bash
    git clone https://github.com/souzaluan/url-shortener.git
+   cd url-shortener
    ```
 
 2. **Certifique-se de que está utilizando a versão correta do Node.js**
@@ -98,6 +99,7 @@ _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
 1. **Clone o repositório**
    ```bash
    git clone https://github.com/souzaluan/url-shortener.git
+   cd url-shortener
    ```
 2. **Crie um arquivo `.env` com base no arquivo `.env.example` e preencha as variáveis**
 
