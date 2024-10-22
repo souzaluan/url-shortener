@@ -64,6 +64,7 @@ _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
    ```
 
 2. **Certifique-se de que está utilizando a versão correta do Node.js**
+   
    Verifique a versão atual instalada:
    ```bash
    node --version
