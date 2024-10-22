@@ -18,9 +18,7 @@
 - [x] Redirecionamento para a URL de origem
 
 # :rocket: Teste a aplicação
-**Você pode acessar e testar a aplicação em:**
-
-<a href="https://url-shortener-6qdt.onrender.com/"><strong>URL Shortener API »</strong></a>
+**Você pode acessar e testar a aplicação através de: `https://url-shortener-6qdt.onrender.com/`**
 
 _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
 
