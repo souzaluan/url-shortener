@@ -8,6 +8,15 @@
   </p>
 </div>
 
+# ⚙️ Funcionalidades
+- [x] Cadastro de novos usuários
+- [x] Autenticação de usuários
+- [x] Encurtar URL, com ou sem autenticação
+- [x] Listar URLs criadas pelo usuário autenticado
+- [x] Editar uma URL criada pelo usuário autenticado
+- [x] Remover uma URL criada pelo usuário autenticado
+- [x] Redirecionamento para a URL de origem
+
 # :wrench: Tecnologias
 
 * **Node.js**
