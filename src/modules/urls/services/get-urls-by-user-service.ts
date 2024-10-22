@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe'
 
 import { NotFoundError } from '../../../crosscutting/errors/not-found-error'
+import env from '../../../crosscutting/config/environment-variables'
 
 import IUrlRepository, {
   URL_REPOSITORY_TOKEN,
@@ -42,8 +43,18 @@ class GetUrlsByUserService implements IGetUrlsByUserService {
       limit,
     })
 
+    const normalizedUrls: IGetUrlsByUser.Response['data'] = data.map((url) => ({
+      id: url.id,
+      clicks: url.clicks,
+      originUrl: url.originUrl,
+      shortenedUrl: `${env.API_URL}/${url.slug}`,
+      createdAt: url.createdAt,
+      updatedAt: url.updatedAt,
+      deletedAt: url.deletedAt,
+    }))
+
     return {
-      data,
+      data: normalizedUrls,
       items,
       pages,
     }

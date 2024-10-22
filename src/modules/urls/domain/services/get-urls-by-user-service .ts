@@ -8,7 +8,11 @@ export namespace IGetUrlsByUser {
   }
 
   export interface Response {
-    data: IUrlEntity[]
+    data: Array<
+      Omit<IUrlEntity, 'slug' | 'user' | 'userId'> & {
+        shortenedUrl: string
+      }
+    >
     pages: number
     items: number
   }
