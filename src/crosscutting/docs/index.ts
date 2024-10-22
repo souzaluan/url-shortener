@@ -15,7 +15,7 @@ export default {
   servers: [
     {
       description: 'Development',
-      url: `http://localhost:${env.APP_PORT}/${env.API_PREFIX_URL}`,
+      url: `http://localhost:${env.APP_PORT}${env.API_PREFIX_URL}`,
     },
   ],
   paths: {
