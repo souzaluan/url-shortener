@@ -45,7 +45,7 @@ describe('GetUrlsByUserService', () => {
       page: 1,
     })
 
-    expect(data[0].slug).toBe('Abc012')
+    expect(data[0].originUrl).toBe('https://localhost:3000/api/long-url')
     expect(items).toEqual(2)
     expect(pages).toEqual(1)
   })
