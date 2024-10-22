@@ -8,7 +8,7 @@
   </p>
 </div>
 
-# ⚙️ Funcionalidades
+# :gear: Funcionalidades
 - [x] Cadastro de novos usuários
 - [x] Autenticação de usuários
 - [x] Encurtar URL, com ou sem autenticação
@@ -16,6 +16,13 @@
 - [x] Editar uma URL criada pelo usuário autenticado
 - [x] Remover uma URL criada pelo usuário autenticado
 - [x] Redirecionamento para a URL de origem
+
+# :rocket: Teste a aplicação
+**Você pode acessar e testar a aplicação em:**
+
+<a href="https://url-shortener-6qdt.onrender.com/"><strong>URL Shortener API »</strong></a>
+
+_Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
 
 # :wrench: Tecnologias
 
