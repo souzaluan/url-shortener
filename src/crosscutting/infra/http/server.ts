@@ -15,7 +15,7 @@ import { DataSourceOptions } from 'typeorm'
 import DataSourceManager from '../typeorm/helpers/data-source-manager'
 import dataSourceOptions from '../typeorm/config/data-source'
 
-const APP_PORT = env.APP_PORT
+const PORT = env.PORT
 
 const app = express()
 
@@ -36,8 +36,8 @@ connection
     if (isInitialized) {
       console.log('Database connected!')
 
-      app.listen(APP_PORT, () => {
-        console.log('Server is running on port', APP_PORT)
+      app.listen(PORT, () => {
+        console.log('Server is running on port', PORT)
       })
     }
   })
