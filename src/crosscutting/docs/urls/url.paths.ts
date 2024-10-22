@@ -161,6 +161,74 @@ export default {
       },
     },
   },
+  '/urls/my': {
+    get: {
+      tags: ['URL'],
+      summary: 'Get my URLs',
+      security: [
+        {
+          jwtAuth: [],
+        },
+      ],
+      parameters: [
+        {
+          description: 'Current page',
+          name: 'page',
+          in: 'query',
+          required: false,
+          default: 1,
+          schema: {
+            $ref: '#components/schemas/Url',
+          },
+        },
+        {
+          description: 'Page limit',
+          name: 'limit',
+          in: 'query',
+          required: false,
+          default: 10,
+          schema: {
+            $ref: '#components/schemas/Url',
+          },
+        },
+      ],
+      responses: {
+        200: {
+          description: 'Success',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  data: {
+                    type: 'array',
+                    items: {
+                      $ref: '#components/schemas/Url',
+                    },
+                  },
+                  pages: {
+                    type: 'integer',
+                  },
+                  items: {
+                    type: 'integer',
+                  },
+                },
+              },
+            },
+          },
+        },
+        400: {
+          $ref: '#components/responses/400',
+        },
+        401: {
+          $ref: '#components/responses/400',
+        },
+        500: {
+          $ref: '#components/responses/500',
+        },
+      },
+    },
+  },
   '/{slug}': {
     get: {
       tags: ['URL'],
