@@ -20,6 +20,8 @@
 # :rocket: Teste a aplicação
 **Você pode acessar e testar a aplicação através de: `https://url-shortener-6qdt.onrender.com/`**
 
+Obs: A aplicação está hospedada em uma instância gratuita do Render, que pode levar alguns segundos para reativar após períodos de inatividade.
+
 _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
 
 # :wrench: Tecnologias
