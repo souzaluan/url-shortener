@@ -16,7 +16,7 @@ const dataSourceOptions: Map<'default', DataSourceOptions> = new Map([
       password: database.password,
       database: database.name,
       logging: !env.isProduction,
-      migrationsRun: false,
+      migrationsRun: true,
       entities: [
         resolve(
           'src',
