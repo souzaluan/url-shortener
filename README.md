@@ -62,21 +62,33 @@ _Sinta-se à vontade para encurtar URLs e explorar as funcionalidades da API._
    ```bash
    git clone https://github.com/souzaluan/url-shortener.git
    ```
-3. **Instale as dependências**
+
+2. **Certifique-se de que está utilizando a versão correta do Node.js**
+   Verifique a versão atual instalada:
+   ```bash
+   node --version
+   ```
+   Se a versão não corresponder à especificada no projeto, recomendamos o uso do nvm para gerenciar versões de Node.js. Para alternar automaticamente para a versão correta, execute o seguinte comando na raiz do projeto:
+   ```bash
+   nvm use
+   ```
+   _Caso não tenha o nvm instalado, siga este [guia de instalação](https://github.com/nvm-sh/nvm#installing-and-updating)_
+
+4. **Instale as dependências**
    ```bash
    npm install
    ```
-4. **Crie um arquivo `.env` com base no arquivo `.env.example` e preencha as variáveis**
+5. **Crie um arquivo `.env` com base no arquivo `.env.example` e preencha as variáveis**
 
-5. **Execute as migrations**
+6. **Execute as migrations**
    ```bash
    npm run migration:run
    ```
-6. **Inicie o servidor em ambiente de desenvolvimento**
+7. **Inicie o servidor em ambiente de desenvolvimento**
    ```bash
    npm run dev:server
    ```
-7. **Acesse a documentação em: `http://localhost:<PORT>/docs`**
+8. **Acesse a documentação em: `http://localhost:<PORT>/docs`**
 
 ### Com Docker
 
